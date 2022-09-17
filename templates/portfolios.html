@@ -20,15 +20,15 @@
             <th>Decision</th>
         </tr>
         {% for portfolio in portfolios %}
-            <tr>
-                <td>{{ portfolio.symbol }}</td>
-                <td>{{ portfolio.rank1 | round(2) }}</td>
-                <td>{{ portfolio.rank2 | round(2) }}</td>
-                <td>{{ portfolio.rank3 | round(2) }}</td>
-                <td>{{ portfolio.rank4 | round(2) }}</td>
-                <td>{{ portfolio.rank5 | round(2) }}</td>
-                <td>{{ portfolio.decision | round(3) }}</td>
-            </tr>
+        <tr>
+            <td>{{ portfolio.symbol }}</td>
+            <td>{{ portfolio.rank1 | round(2) }}</td>
+            <td>{{ portfolio.rank2 | round(2) }}</td>
+            <td>{{ portfolio.rank3 | round(2) }}</td>
+            <td>{{ portfolio.rank4 | round(2) }}</td>
+            <td>{{ portfolio.rank5 | round(2) }}</td>
+            <td>{{ portfolio.decision | round(3) }}</td>
+        </tr>
         {% endfor %}
     </table>
 </div>

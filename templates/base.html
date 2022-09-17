@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,13 +9,16 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/w3.css') }}">
     {% block head %}{% endblock %}
 </head>
+
 <body>
     {% block body %}{% endblock %}
-<footer class="center">
-    <br><br><hr>
-    <p>Author: Zezheng James Xu</p>
-    <p>Contact: zx2370@columbia.edu</p>
-    <a href="../">Homepage</a><br><br>
-</footer>
+    <footer class="center">
+        <br><br>
+        <hr>
+        <p>Author: Zezheng James Xu</p>
+        <p>Contact: zx2370@columbia.edu</p>
+        <a href="../">Homepage</a><br><br>
+    </footer>
 </body>
+
 </html>
