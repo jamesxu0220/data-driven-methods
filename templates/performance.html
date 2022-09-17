@@ -1,40 +1,14 @@
 {% extends 'base.html' %}
 
 {% block head %}
-<title>Performance</title>
+<title>Performance Result</title>
 {% endblock %}
 
 {% block body %}
 <div class="content center">
-    <h1>Portfolios Info</h1>
-    <h3>Performance</h3>
-    <table class="center">
-        <tr>
-            <th>Group ID</th>
-            <th>Submission ID</th>
-            <th>Symbol/ID</th>
-            <th>Rank 1</th>
-            <th>Rank 2</th>
-            <th>Rank 3</th>
-            <th>Rank 4</th>
-            <th>Rank 5</th>
-            <th>Decision</th>
-        </tr>
-        {% for portfolio in portfolios %}
-            <tr>
-                <td>{{ portfolio.group_id }}</td>
-                <td>{{ portfolio.submission_id }}</td>
-                <td>{{ portfolio.symbol }}</td>
-                <td>{{ portfolio.rank1 | round(5) }}</td>
-                <td>{{ portfolio.rank2 | round(5) }}</td>
-                <td>{{ portfolio.rank3 | round(5) }}</td>
-                <td>{{ portfolio.rank4 | round(5) }}</td>
-                <td>{{ portfolio.rank5 | round(5) }}</td>
-                <td>{{ portfolio.decision | round(5) }}</td>
-            </tr>
-        {% endfor %}
-    </table>
-    <br><br><br>
-    <a href="../">Home</a>
+    <h1>Portfolio Performance Result</h1>
+    <h5>Group ID: {{ performance.group_id }}</h5>
+    <h5>Submission ID: {{ performance.submission_id }}</h5>
+    <h5>Ranked Probability Score: {{ performance.rps | round(4) }}</h5>
 </div>
 {% endblock %}
