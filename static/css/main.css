@@ -1,0 +1,24 @@
+body {
+    font-family: sans-serif
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.center {
+    /* border: 5px solid #FFFF00; */
+    text-align: center;
+}
+
+ul.no-bullets {
+    list-style-type: none; /* Remove bullets */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margins */
+}
+
+table.center {
+    margin-left:auto; 
+    margin-right:auto;
+}

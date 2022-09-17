@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Groups</title>
+{% endblock %}
+
+{% block body %}
+<div class="content center">
+    <h1>Groups Info</h1>
+
+    <h3>Current Groups</h3>
+    <table class="center">
+        <tr>
+            <th>Group ID</th>
+            <th>Group Name</th>
+            <th>Member 1</th>
+            <th>Member 2</th>
+            <th>Member 3</th>
+            <th>Member 4</th>
+            <th>Member 5</th>
+        </tr>
+        {% for group in groups %}
+            <tr>
+                <td>{{ group.group_id }}</td>
+                <td>{{ group.group_name }}</td>
+                <td>{{ group.member1_id }}</td>
+                <td>{{ group.member2_id }}</td>
+                <td>{{ group.member3_id }}</td>
+                <td>{{ group.member4_id }}</td>
+                <td>{{ group.member5_id }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <br>
+
+    <h3>Add your group</h2>
+    <span>* indicates required fields</span>
+    
+    <form action="/groups/" method="POST">
+         
+        <label for ="group_id">Group ID*:</label>
+        <input type="number" name="group_id" id="group_id" required><br>
+
+        <label for ="group_name">Group Name*:</label>
+        <input type="text" name="group_name" id="group_name" required><br>
+
+        <label for ="member1_id">Member1 UNI*:</label>
+        <input type="text" name="member1_id" id="member1_id" required><br>
+
+        <label for ="member2_id">Member2 UNI:</label>
+        <input type="text" name="member2_id" id="member2_id"><br>
+
+        <label for ="member3_id">Member3 UNI:</label>
+        <input type="text" name="member3_id" id="member3_id"><br>
+
+        <label for ="member4_id">Member4 UNI:</label>
+        <input type="text" name="member4_id" id="member4_id"><br>
+
+        <label for ="member5_id">Member5 UNI:</label>
+        <input type="text" name="member5_id" id="member5_id"><br>
+
+        <br>
+        <input type="submit" value="Add Group">
+    </form>
+
+    <br><br>
+    <a href="../">Home</a>
+</div>
+{% endblock %}
