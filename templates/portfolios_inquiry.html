@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Portfolio Inquiry</title>
+{% endblock %}
+
+{% block body %}
+<div class="content center">
+    <h1>Portfolio Inquiry</h1>
+
+    <form action="/portfolio_inquiry/" method="POST">
+         
+        <label for ="group_id">Group ID:</label>
+        <input type="number" name="group_id" id="group_id" required><br>
+
+        <label for ="submission_id">Submission ID:</label>
+        <input type="text" name="submission_id" id="submission_id" required><br>
+
+        <br>
+        <input type="submit" value="Look up performance">
+    </form>
+    <br><br><br>
+    <a href="../">Home</a>
+</div>
+{% endblock %}
