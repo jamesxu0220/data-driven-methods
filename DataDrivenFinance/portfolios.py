@@ -17,6 +17,6 @@ def portfolios():
             <h3>Error: Found no matching portfolio - try checking inputs</h3>
             <a href=".">Try Again</a>
             """
-        return render_template('portfolios.html', portfolios=portfolios)
+        return render_template('portfolio/portfolios.html', portfolios=portfolios)
     else:
-        return render_template('portfolio_inquiry.html')
+        return render_template('portfolio/portfolio_inquiry.html')

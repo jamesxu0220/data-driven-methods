@@ -42,6 +42,6 @@ def performance():
                 return "Error when adding new performance result to database"
         performance = Performance.query.filter_by(
             group_id=gid).filter_by(submission_id=sid).first()
-        return render_template('performance.html', performance=performance)
+        return render_template('performance/performance.html', performance=performance)
     else:
-        return render_template('performance_inquiry.html')
+        return render_template('performance/performance_inquiry.html')
