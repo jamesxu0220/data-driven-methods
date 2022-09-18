@@ -22,9 +22,9 @@ def submit():
                 <a href=".">Try Again</a>
                 """
         sid = request.form['submission_id']
-        if Decision.query.filter_by(group_id=gid).filter_by(submission_id=sid).all():
+        if Decision.query.filter_by(group_id=gid, submission_id=sid).all():
             all_prev = Decision.query.filter_by(
-                group_id=gid).filter_by(submission_id=sid).all()
+                group_id=gid, submission_id=sid).all()
             for record in all_prev:
                 db.session.delete(record)
             db.session.commit()

@@ -9,7 +9,7 @@ def portfolios():
         gid = request.form['group_id']
         sid = request.form['submission_id']
         portfolios = Decision.query.filter_by(
-            group_id=gid).filter_by(submission_id=sid).all()
+            group_id=gid, submission_id=sid).all()
         if len(portfolios) == 0:
             return """
             <!doctype html>

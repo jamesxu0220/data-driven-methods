@@ -6,9 +6,12 @@ import numpy as np
 
 def getRPS(gid: int, sid: int) -> float:
     portfolio = Decision.query.filter_by(
-        group_id=gid).filter_by(submission_id=sid).first()
+        group_id=gid, submission_id=sid).first()
+
     sample = Decision.query.filter_by(
-        group_id=-999).filter_by(submission_id=sid).first()
+        group_id=-999, submission_id=sid).first()
+
+
     f_array = np.array([[portfolio.rank1, portfolio.rank2,
                        portfolio.rank3, portfolio.rank4, portfolio.rank5]])
     f = np.cumsum(f_array, axis=1)
@@ -24,13 +27,13 @@ def performance():
         gid = request.form['group_id']
         sid = request.form['submission_id']
         if not Decision.query.filter_by(
-                group_id=gid).filter_by(submission_id=sid).all():
+                group_id=gid, submission_id=sid).all():
             return "Error: portfolio does not exist"
         elif not Decision.query.filter_by(
-                group_id=-999).filter_by(submission_id=sid).all():
+                group_id=-999, submission_id=sid).all():
             return "Error: Results not ready"
         perf = Performance.query.filter_by(
-            group_id=gid).filter_by(submission_id=sid).first()
+            group_id=gid, submission_id=sid).first()
         if perf is None:
             new_rps = getRPS(gid, sid)
             new_perf = Performance(
@@ -41,7 +44,7 @@ def performance():
             except:
                 return "Error when adding new performance result to database"
         performance = Performance.query.filter_by(
-            group_id=gid).filter_by(submission_id=sid).first()
+            group_id=gid, submission_id=sid).first()
         return render_template('performance/performance.html', performance=performance)
     else:
         return render_template('performance/performance_inquiry.html')
