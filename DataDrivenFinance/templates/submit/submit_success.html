@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>File Submitted</title>
+{% endblock %}
+
+{% block body %}
+<div class="content center">
+    <h3>Portfolio Submitted Successfully</h3>
+    {% if update == True %}
+        <div>Good job!</div>
+        <br>
+        <h5>*Note: Previous portfolio submission has been updated.*</h5>
+    {% else %}
+        <div>Good job!</div>
+    {% endif %}
+</div>
+{% endblock %}

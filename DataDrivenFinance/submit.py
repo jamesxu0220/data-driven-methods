@@ -43,7 +43,7 @@ def submit():
                 for row in csv_file:
                     if round(float(row['rank1']) + float(row['rank2']) + float(row['rank3']) + float(row['rank4']) + float(row['rank5']), 3) != 1:
                         return "Error: " + str(row["id"]) + "'s ranks do not sum to unity"
-                    total_weight += float(row['decision'])
+                    total_weight += abs(float(row['decision']))
                     decisions.append(Decision(group_id=gid, submission_id=sid, symbol=row['id'], rank1=row['rank1'],
                                               rank2=row['rank2'], rank3=row['rank3'], rank4=row['rank4'], rank5=row['rank5'], decision=row['decision']))
                 if len(decisions) != 110:
@@ -67,23 +67,9 @@ def submit():
                             db.session.commit()
                         except:
                             return "Error: There was an issue adding data for stock " + str(decision.symbol)
-                this_file.close()
-                os.remove(this_file.name)
-            if erased:
-                return """
-                    <!doctype html>
-                    <title>File Submitted</title>
-                    <h3>Portfolio Submitted Successfully</h3>
-                    <h5>Note: Previous portfolio for the same submission id has been replaced.</h5>
-                    <a href="../">Back to Home</a>
-                    """
-            else:
-                return """
-                    <!doctype html>
-                    <title>File Submitted</title>
-                    <h3>Portfolio Submitted Successfully</h3>
-                    <a href="../">Back to Home</a>
-                    """
+            this_file.close()
+            os.remove(this_file.name)
+            return render_template('submit/submit_success.html', update=erased)
         else:
             return """
                 <!doctype html>
@@ -92,4 +78,4 @@ def submit():
                 <a href=".">Try Again</a>
                 """
     else:
-        return render_template('submit.html')
+        return render_template('submit/submit.html')
