@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Submissions Summary</title>
+{% endblock %}
+
+{% block body %}
+<div class="content center">
+    <h1>Submissions Info</h1>
+    <h3>Received Submissions So Far</h3>
+    <table class="center">
+        <tr>
+            <th>Group ID</th>
+            <th>Submission ID</th>
+        </tr>
+        {% for submission in submissions %}
+        <tr>
+            <td>{{ submission.group_id }}</td>
+            <td>{{ submission.submission_id }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <hr><br>
+    <h3><a href="../portfolios">Back to portfolio inquiry</a></h3>
+</div>
+{% endblock %}

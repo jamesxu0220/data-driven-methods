@@ -20,3 +20,10 @@ def portfolios():
         return render_template('portfolio/portfolios.html', portfolios=portfolios)
     else:
         return render_template('portfolio/portfolio_inquiry.html')
+
+
+@app.route('/portfolios_summary/')
+def portfolios_summary():
+    submissions = Decision.query.with_entities(Decision.group_id, Decision.submission_id).order_by(
+        Decision.submission_id, Decision.group_id).distinct()
+    return render_template('portfolio/portfolios_summary.html', submissions=submissions)
