@@ -1,0 +1,9 @@
+setup.py
+DataDrivenFinance/__init__.py
+DataDrivenFinance/get_returns.py
+DataDrivenFinance/submit.py
+DataDrivenFinance.egg-info/PKG-INFO
+DataDrivenFinance.egg-info/SOURCES.txt
+DataDrivenFinance.egg-info/dependency_links.txt
+DataDrivenFinance.egg-info/requires.txt
+DataDrivenFinance.egg-info/top_level.txt
