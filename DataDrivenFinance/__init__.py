@@ -1,5 +1,5 @@
 from tkinter.messagebox import RETRY
-from flask import Flask
+from flask import Flask, redirect
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
@@ -15,3 +15,7 @@ import DataDrivenFinance.debug_cleanup
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+@app.route('/')
+def home():
+    return redirect('/index')
