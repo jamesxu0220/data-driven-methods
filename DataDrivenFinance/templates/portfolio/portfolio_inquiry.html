@@ -7,6 +7,7 @@
 {% block body %}
 <div class="content center">
     <h1>Portfolio Inquiry</h1>
+    <h3>Look Up A Specific Portfolio</h3><br>
     <form action="/portfolios/" method="POST">
         <label for="group_id">Group ID:</label>
         <input type="number" name="group_id" id="group_id" required><br>
@@ -16,6 +17,6 @@
         <input type="submit" value="Check portfolio">
     </form>
     <br><hr><br>
-    <h3><a href="../portfolios_summary">Check All Submissions Received</a><br></h3>
+    <h3><a href="../portfolios_summary">Or...Check All Submissions Received</a><br></h3>
 </div>
 {% endblock %}

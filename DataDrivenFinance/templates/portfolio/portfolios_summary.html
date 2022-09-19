@@ -11,12 +11,18 @@
     <table class="center">
         <tr>
             <th>Group ID</th>
+            <th>Group Name</th>
             <th>Submission ID</th>
+            <th>Action</th>
         </tr>
         {% for submission in submissions %}
         <tr>
-            <td>{{ submission.group_id }}</td>
-            <td>{{ submission.submission_id }}</td>
+            <td>{{ submission[0] }}</td>
+            <td>{{ submission[1] }}</td>
+            <td>{{ submission[2] }}</td>
+            <td>
+                <a href="/portfolio/g{{submission[0]}}/s{{submission[2]}}">View</a>
+            </td>
         </tr>
         {% endfor %}
     </table>
