@@ -1,5 +1,5 @@
 from DataDrivenFinance import app
-from DataDrivenFinance.databases import Group, Decision, ActualRanks, ActualPrices, Performance
+from DataDrivenFinance.databases import Group, Decision, Rankings, ActualRanks, ActualPrices, Performance
 from flask import render_template
 import numpy as np
 
@@ -40,11 +40,13 @@ def getIR(gid: int, sid: int) -> list[float]:
 
 @app.route('/performance/')
 def performance():
-    perfs = Performance.query.order_by(
-        Performance.submission_id, Performance.group_id).all()
+    rankings = Rankings.query.order_by(
+        Rankings.submission_id, Rankings.o_rank).all()
     performances = []
-    for perf in perfs:
+    for ranking in rankings:
         gname = Group.query.filter_by(
-            group_id=perf.group_id).first().group_name
-        performances.append([perf, gname])
+            group_id=ranking.group_id).first().group_name
+        perf = Performance.query.filter_by(
+            submission_id=ranking.submission_id, group_id=ranking.group_id).first()
+        performances.append([perf, gname, ranking])
     return render_template('performance.html', performances=performances)

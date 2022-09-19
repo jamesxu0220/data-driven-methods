@@ -18,7 +18,7 @@ def view(gid, sid):
     portfolios = Decision.query.filter_by(
         group_id=gid, submission_id=sid).all()
     gname = Group.query.filter_by(group_id=gid).with_entities(
-            Group.group_name).first().group_name
+        Group.group_name).first().group_name
     if len(portfolios) == 0:
         return """
         <!doctype html>
@@ -32,7 +32,7 @@ def view(gid, sid):
 @app.route('/portfolios_summary/')
 def portfolios_summary():
     sid_gid_pairs = Decision.query.with_entities(Decision.group_id, Decision.submission_id).order_by(
-        Decision.group_id, Decision.submission_id).distinct().all()
+        Decision.submission_id, Decision.group_id).distinct().all()
     submissions = []
     for pair in sid_gid_pairs:
         sid = pair.submission_id

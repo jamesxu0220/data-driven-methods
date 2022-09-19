@@ -10,7 +10,8 @@ import DataDrivenFinance.groups
 import DataDrivenFinance.submit
 import DataDrivenFinance.portfolios
 import DataDrivenFinance.performance
-import DataDrivenFinance.test
+import DataDrivenFinance.debug_setup
+import DataDrivenFinance.debug_cleanup
 
 if __name__ == "__main__":
     app.run(debug=True)

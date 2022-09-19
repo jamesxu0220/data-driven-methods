@@ -36,6 +36,14 @@ class Performance(db.Model):
     ir = db.Column(db.Float, nullable=False)
 
 
+class Rankings(db.Model):
+    submission_id = db.Column(db.Integer, primary_key=True)
+    group_id = db.Column(db.Integer, primary_key=True)
+    f_rank = db.Column(db.Integer, nullable=False)
+    d_rank = db.Column(db.Integer, nullable=False)
+    o_rank = db.Column(db.Integer, nullable=False)
+
+
 class TradingWeek(db.Model):
     submission_id = db.Column(db.Integer, primary_key=True)
     start_day = db.Column(db.String(10), nullable=False)

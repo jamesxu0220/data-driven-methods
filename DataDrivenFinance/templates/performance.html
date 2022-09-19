@@ -9,23 +9,29 @@
     <h1>Portfolios Performance Results</h1><br>
     <table class="center">
         <tr>
+            <th>Sub. ID</th>
             <th>Group ID</th>
             <th>Group Name</th>
-            <th>Submission ID</th>
-            <th>Ranked Probability Score</th>
+            <th>Overall Rank</th>
+            <th>Forecast Rank</th>
+            <th>Ranked Prob. Score</th>
+            <th>Decision Rank</th>
+            <th>Info.Ratio</th>
             <th>Portfolio Return</th>
             <th>Return Std. Dev.</th>
-            <th>Information Ratio</th>
         </tr>
         {% for performance in performances %}
         <tr>
+            <td>{{ performance[0].submission_id }}</td>
             <td>{{ performance[0].group_id }}</td>
             <td>{{ performance[1] }}</td>
-            <td>{{ performance[0].submission_id }}</td>
+            <td>{{ performance[2].o_rank }}</td>
+            <td>{{ performance[2].f_rank }}</td>
             <td>{{ "%.4f"|format(performance[0].rps) }}</td>
+            <td>{{ performance[2].d_rank }}</td>
+            <td>{{ "%.4f"|format(performance[0].ir) }}</td>
             <td>{{ "%.4f"|format(performance[0].ret) }}</td>
             <td>{{ "%.4f"|format(performance[0].sdp) }}</td>
-            <td>{{ "%.4f"|format(performance[0].ir) }}</td>
         </tr>
         {% endfor %}
     </table>

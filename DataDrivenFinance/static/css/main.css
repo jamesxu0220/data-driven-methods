@@ -4,8 +4,8 @@ table, th, td {
 }
 
 .center {
-    /* border: 5px solid #FFFF00; */
     text-align: center;
+    margin: 0 2%;
 }
 
 ul.no-bullets {
@@ -29,7 +29,7 @@ footer {
 }
 
 th, td {
-    padding: 15px;
+    padding: 12px;
 }
 
 th {
