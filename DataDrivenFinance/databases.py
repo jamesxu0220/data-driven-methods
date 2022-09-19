@@ -30,12 +30,34 @@ class Decision(db.Model):
 class Performance(db.Model):
     submission_id = db.Column(db.Integer, primary_key=True)
     group_id = db.Column(db.Integer, primary_key=True)
-    rps = db.Column(db.Float)
-    #ret = db.Column(db.Float)
-    #sdp = db.Column(db.Float)
-    #ir = db.Column(db.Float)
-    #rps_rank = db.Column(db.Integer)
-    #ir_rank = db.Column(db.Integer)
-    #overall_ranking = db.Column(db.Integer)
+    rps = db.Column(db.Float, nullable=False)
+    ret = db.Column(db.Float, nullable=False)
+    sdp = db.Column(db.Float, nullable=False)
+    ir = db.Column(db.Float, nullable=False)
 
-# class AssetsHistory(db.Model):
+
+class TradingWeek(db.Model):
+    submission_id = db.Column(db.Integer, primary_key=True)
+    start_day = db.Column(db.String(10), nullable=False)
+    end_day = db.Column(db.String(10), nullable=False)
+
+
+class ActualRanks(db.Model):
+    submission_id = db.Column(db.Integer, primary_key=True)
+    symbol = db.Column(db.String(10), primary_key=True)
+    rank1 = db.Column(db.Float, nullable=False)
+    rank2 = db.Column(db.Float, nullable=False)
+    rank3 = db.Column(db.Float, nullable=False)
+    rank4 = db.Column(db.Float, nullable=False)
+    rank5 = db.Column(db.Float, nullable=False)
+
+
+class ActualPrices(db.Model):
+    submission_id = db.Column(db.Integer, primary_key=True)
+    symbol = db.Column(db.String(10), primary_key=True)
+    price_day1 = db.Column(db.Float, nullable=False)
+    price_day2 = db.Column(db.Float, nullable=False)
+    price_day3 = db.Column(db.Float, nullable=False)
+    price_day4 = db.Column(db.Float, nullable=False)
+    price_day5 = db.Column(db.Float, nullable=False)
+    price_day6 = db.Column(db.Float, nullable=False)

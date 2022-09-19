@@ -10,5 +10,8 @@
     <h5>Group ID: {{ performance.group_id }}</h5>
     <h5>Submission ID: {{ performance.submission_id }}</h5>
     <h5>Ranked Probability Score: {{ performance.rps | round(4) }}</h5>
+    <h5>Portfolio Return: {{ performance.ret | round(4) }}</h5>
+    <h5>Standard Deviation of Portfolio Return: {{ performance.sdp | round(4) }}</h5>
+    <h5>Information Ratio: {{ performance.ir | round(4) }}</h5>
 </div>
 {% endblock %}
