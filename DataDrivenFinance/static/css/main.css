@@ -31,3 +31,11 @@ footer {
 th, td {
     padding: 15px;
 }
+
+th {
+    font-size: 20px;
+}
+
+td {
+    font-size: 17px;
+}
