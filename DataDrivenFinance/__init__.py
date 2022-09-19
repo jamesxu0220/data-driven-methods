@@ -2,7 +2,7 @@ from flask import Flask, redirect
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
-app.config['UPLOAD_FOLDER'] = './DataDrivenFinance/______submissions/'
+app.config['UPLOAD_FOLDER'] = './DataDrivenFinance/'
 
 import DataDrivenFinance.index
 import DataDrivenFinance.groups
