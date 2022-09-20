@@ -8,10 +8,12 @@ Fall 2022
 
 https://data-driven-methods.herokuapp.com/index
 
+<br />
+<br />
 
-/n
+<b>Resume-style description:</b>
 
-Resume-style description:
+<br />
 
 Full Stack Web Development Using Python Flask Sep 2022 - Current
 
