@@ -14,8 +14,6 @@ https://data-driven-methods.herokuapp.com/index
 
 <b>Resume-style description:</b>
 
-<br />
-
 • Design, build and debug an online web application using Python Flask that accepts user submission of investment portfolios, ranks users based on calculated returns and displays results in an intuitive fashion; used as the platform for course-wide investment competition
 
 • Setup the frontend webpages using HTML, CSS and Jinja
