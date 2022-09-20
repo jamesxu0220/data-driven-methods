@@ -9,13 +9,12 @@ Fall 2022
 https://data-driven-methods.herokuapp.com/index
 
 <br />
+
 <br />
 
 <b>Resume-style description:</b>
 
 <br />
-
-Full Stack Web Development Using Python Flask Sep 2022 - Current
 
 • Design, build and debug an online web application using Python Flask that accepts user submission of investment portfolios, ranks users based on calculated returns and displays results in an intuitive fashion; used as the platform for course-wide investment competition
 
