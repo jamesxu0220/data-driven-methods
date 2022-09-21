@@ -3,6 +3,8 @@ from flask import Flask, redirect
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 app.config['UPLOAD_FOLDER'] = './DataDrivenFinance/'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
 
 import DataDrivenFinance.index
 import DataDrivenFinance.groups

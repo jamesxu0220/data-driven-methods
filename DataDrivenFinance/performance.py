@@ -15,7 +15,7 @@ def getRPS(gid: int, sid: int) -> float:
                                      ActualRanks.rank4, ActualRanks.rank5).all())
     f = np.cumsum(portfolio, axis=1)
     q = np.cumsum(actual, axis=1)
-    return float(np.mean(np.sum((q-f)**2, axis=1)/f.shape[1]))
+    return np.mean(np.sum((q-f)**2, axis=1)/f.shape[1])
 
 
 def getIR(gid: int, sid: int) -> list[float]:
@@ -27,7 +27,7 @@ def getIR(gid: int, sid: int) -> list[float]:
                       .filter_by(submission_id=sid).order_by(ActualPrices.symbol)
                       .with_entities(ActualPrices.price_day1, ActualPrices.price_day2,
                                      ActualPrices.price_day3, ActualPrices.price_day4,
-                                     ActualPrices.price_day5, ActualPrices.price_day6).all())
+                                     ActualPrices.price_day5).all())
 
     RET = np.nansum(np.reshape(weights, (-1, 1)) *
                     (prices[:, 1:]/prices[:, :-1]-1), axis=0)
@@ -35,7 +35,7 @@ def getIR(gid: int, sid: int) -> list[float]:
     std = np.nanstd(ret, ddof=1)
     ret = np.nansum(ret)
     ir = (252/5)*ret/(np.sqrt(252)*std)
-    return [float(ret), float(std), float(ir)]
+    return [ret, std, ir]
 
 
 @app.route('/performance/')

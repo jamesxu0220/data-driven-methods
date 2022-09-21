@@ -2,6 +2,7 @@ from DataDrivenFinance import app, get_yfinance, performance
 from DataDrivenFinance.databases import db, Decision, Performance, TradingWeek, Rankings
 from flask import render_template
 import pandas as pd
+import numpy as np
 from scipy.stats import rankdata
 
 
@@ -12,13 +13,15 @@ def debug_setup(sid, start_date, end_date):
     # first week 0 - "2022-09-09" to "2022-09-17"
     # so link to update is /debug/setup/0/09-09/09-17
 
-    try:
-        new_week = TradingWeek(
-            submission_id=sid, start_day=start_date, end_day=end_date)
-        db.session.add(new_week)
-        db.session.commit()
-    except:
-        return "Error setting up trading week"
+    trading_week = TradingWeek.query.filter_by(submission_id=sid).all()
+    if not trading_week:
+        try:
+            new_week = TradingWeek(
+                submission_id=sid, start_day=start_date, end_day=end_date)
+            db.session.add(new_week)
+            db.session.commit()
+        except:
+            return "Error setting up trading week"
 
     try:
         # if not ActualRanks.query.filter_by(submission_id=sid).all():
@@ -44,13 +47,14 @@ def debug_setup(sid, start_date, end_date):
             db.session.commit()
         except:
             return "Error when adding new performance result to database for group " + str(gid)
+    fp = pd.Series(stats['forecast_performance']).rank(ascending=True)
+    fp[fp.isna()] = np.nanmax(fp) + 1
+    dp = pd.Series(stats['decision_performance']).rank(ascending=False)
+    dp[dp.isna()] = np.nanmax(dp) + 1
+    stats['forecast_rank'] = fp
+    stats['decision_rank'] = dp
+    stats['overall_rank'] = (fp+dp)/2
 
-    stats['forecast_rank'] = rankdata(
-        stats['forecast_performance'], method='ordinal')
-    stats['decision_rank'] = rankdata(
-        stats['decision_performance'], method='ordinal')
-    stats['overall_rank'] = (stats['forecast_rank'] + stats['decision_rank'])/2
-    stats['overall_rank'] = rankdata(stats['overall_rank'], method='dense')
     for index, row in stats.iterrows():
         new_rank = Rankings(submission_id=sid, group_id=row['gid'], f_rank=row['forecast_rank'],
                             d_rank=row['decision_rank'], o_rank=row['overall_rank'])

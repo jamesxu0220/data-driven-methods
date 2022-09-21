@@ -68,4 +68,3 @@ class ActualPrices(db.Model):
     price_day3 = db.Column(db.Float, nullable=False)
     price_day4 = db.Column(db.Float, nullable=False)
     price_day5 = db.Column(db.Float, nullable=False)
-    price_day6 = db.Column(db.Float, nullable=False)
