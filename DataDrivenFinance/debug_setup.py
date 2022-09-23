@@ -10,8 +10,11 @@ from scipy.stats import rankdata
 def debug_setup(sid, start_date, end_date):
     start_date = "2022-" + start_date
     end_date = "2022-" + end_date
-    # first week 0 - "2022-09-09" to "2022-09-17"
+    # initial week 0 - "2022-09-09" to "2022-09-17"
     # so link to update is /debug/setup/0/09-09/09-17
+    
+    # first week 1 - "2022-09-16" to "2022-09-24"
+    # so link to update is /debug/setup/1/09-16/09-24
 
     trading_week = TradingWeek.query.filter_by(submission_id=sid).all()
     if not trading_week:

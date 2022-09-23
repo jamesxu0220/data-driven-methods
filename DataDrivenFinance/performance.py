@@ -1,6 +1,7 @@
 from DataDrivenFinance import app
 from DataDrivenFinance.databases import Group, Decision, Rankings, ActualRanks, ActualPrices, Performance
 from flask import render_template
+import pandas as pd
 import numpy as np
 
 
@@ -28,6 +29,12 @@ def getIR(gid: int, sid: int) -> list[float]:
                       .with_entities(ActualPrices.price_day1, ActualPrices.price_day2,
                                      ActualPrices.price_day3, ActualPrices.price_day4,
                                      ActualPrices.price_day5).all())
+    while prices[0][-1] is None:
+        prices = prices[:, :-1]
+
+    prices = pd.DataFrame(prices)
+    prices = prices.fillna(prices.mean(axis=0))
+    prices = np.array(prices)
 
     RET = np.nansum(np.reshape(weights, (-1, 1)) *
                     (prices[:, 1:]/prices[:, :-1]-1), axis=0)

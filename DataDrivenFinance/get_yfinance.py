@@ -23,10 +23,10 @@ def calculateRanks(sid: int):
         raise ValueError("Trading Week not defined")
     start_date = trading_week[0].start_day
     end_date = trading_week[0].end_day
-
     dfs = []
     for s in symbols:
-        data = yf.download(s, start=start_date, end=end_date, progress=False)
+        data = yf.download(s, start=start_date, end=end_date)
+        #data = yf.download(s, start=start_date, end=end_date, progress=False)
         df = data.reset_index()[['Date', 'Adj Close']]
         df['Date'] = pd.to_datetime(df['Date'])
         df['symbol'] = s
@@ -45,9 +45,25 @@ def calculateRanks(sid: int):
     prices = assets_df.to_numpy()
     ActualPricesList = []
     for i, row in enumerate(prices):
+        try:
+            r1 = row[1]
+        except:
+            r1 = None
+        try:
+            r2 = row[2]
+        except:
+            r2 = None
+        try:
+            r3 = row[3]
+        except:
+            r3 = None
+        try:
+            r4 = row[4]
+        except:
+            r4 = None
         ActualPricesList.append(ActualPrices(submission_id=sid, symbol=assets_df.index[i],
-                                                price_day1=row[0], price_day2=row[1], price_day3=row[2],
-                                                price_day4=row[3], price_day5=row[4]))
+                                                price_day1=row[0], price_day2=r1, price_day3=r2,
+                                                price_day4=r3, price_day5=r4))
 
     for price in ActualPricesList:
         try:
@@ -63,9 +79,25 @@ def calculateRanks(sid: int):
 
     ActualRanksList = []
     for i, row in enumerate(actual_ranks):
+        try:
+            r1 = row[1]
+        except:
+            r1 = None
+        try:
+            r2 = row[2]
+        except:
+            r2 = None
+        try:
+            r3 = row[3]
+        except:
+            r3 = None
+        try:
+            r4 = row[4]
+        except:
+            r4 = None
         ActualRanksList.append(ActualRanks(submission_id=sid, symbol=assets_df.index[i],
-                                           rank1=row[0], rank2=row[1], rank3=row[2],
-                                           rank4=row[3], rank5=row[4]))
+                                           rank1=row[0], rank2=r1, rank3=r2,
+                                           rank4=r3, rank5=r4))
 
     for rank in ActualRanksList:
         try:
